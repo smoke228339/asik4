@@ -1,6 +1,5 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class Vertex<V> {
     private V data;
@@ -24,22 +23,20 @@ public class Vertex<V> {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public String toString() {
+        return data.toString();
+    }
 
-        Vertex<?> vertex = (Vertex<?>) o;
-
-        return Objects.equals(data, vertex.data);
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Vertex)) return false;
+        Vertex<?> other = (Vertex<?>) obj;
+        return data.equals(other.data);
     }
 
     @Override
     public int hashCode() {
-        return data != null ? data.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return data.toString();
+        return data.hashCode();
     }
 }
